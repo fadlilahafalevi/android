@@ -1,11 +1,13 @@
 package com.androiddevelopment.mobile_banking;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import android.view.View;
 import android.widget.Button;
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 //check how many times unregistered user tried to log in with wrong credentials
 
                 verifyFromSQLite();
+
+                InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
             }//end onClick
         });//end setOnClickListener

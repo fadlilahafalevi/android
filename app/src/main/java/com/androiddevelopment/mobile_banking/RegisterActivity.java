@@ -1,5 +1,6 @@
 package com.androiddevelopment.mobile_banking;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.androiddevelopment.mobile_banking.helper.InputValidation;
 import com.androiddevelopment.mobile_banking.sql.DatabaseHelper;
@@ -147,11 +149,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             emptyInputEditText();
 
 
+
         } else {
             // Snack Bar to show error message that record already exists
             Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
 
+        InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
     }
 
