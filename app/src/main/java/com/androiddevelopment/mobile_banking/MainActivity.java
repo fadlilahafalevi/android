@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //display welcome msg when app starts
-        Toast.makeText(MainActivity.this, "Welcome User. Please enter your Username and Password.", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Please enter your username and password.", Toast.LENGTH_LONG).show();
 
         //reference Button, User Name and Password
         Button myButton = (Button) findViewById(R.id.loginButton);
