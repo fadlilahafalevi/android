@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatTextView;
 import android.widget.Toast;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,6 @@ import android.widget.EditText;
 
 import com.androiddevelopment.mobile_banking.helper.InputValidation;
 import com.androiddevelopment.mobile_banking.sql.DatabaseHelper;
-
 
 public class MainActivity extends AppCompatActivity {
     //declare vars
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText textInputEditTextPassword;
 
     Button myButton;
+    AppCompatTextView textRegister;
 
     int loginCntr = 3;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         //reference Button, User Name and Password
         myButton = (Button) findViewById(R.id.loginButton);
+        textRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
 
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.usernameTextView);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.passwordTextView);
@@ -72,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
 
             }//end onClick
         });//end setOnClickListener
+
+        textRegister.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intentRegister);
+            }
+        });
+
     }//end onCreate
 
     private void verifyFromSQLite() {
