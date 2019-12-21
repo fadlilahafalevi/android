@@ -31,7 +31,8 @@
             android:gravity="left"
             android:textSize="25dp"
             android:text="Account No"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -51,7 +52,8 @@
             android:gravity="left"
             android:textSize="40dp"
             android:text="Rp. 10.000.000"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/avenirnextltpro_demi_xml"/>
     </android.support.v7.widget.CardView>
 
     <Button
@@ -67,12 +69,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="370dp"
         android:layout_marginLeft="29dp"
         android:layout_alignParentLeft="true"
         android:text="Checking"
         android:textSize="15dp"
-        android:textColor="@color/colorBackground"/>
+        android:textColor="@color/colorBackground"
+        android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
     <Button
         android:id="@+id/savingsButton"
@@ -86,11 +89,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="370dp"
         android:layout_centerHorizontal="true"
         android:text="Savings"
         android:textSize="15dp"
-        android:textColor="@color/colorBackground"/>
+        android:textColor="@color/colorBackground"
+        android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
     <Button
         android:id="@+id/transferButton"
@@ -105,12 +109,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="370dp"
         android:layout_marginRight="29dp"
         android:layout_alignParentRight="true"
         android:text="Transfer"
         android:textSize="15dp"
-        android:textColor="@color/colorBackground"/>
+        android:textColor="@color/colorBackground"
+        android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
 <!--    <Button-->
 <!--        android:text="CHECKING"-->
