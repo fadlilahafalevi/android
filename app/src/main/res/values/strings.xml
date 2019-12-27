@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile Banking</string>
+    <string name="app_name">Ali Banking</string>
     <string name="prompt">Select Transfer Type</string>
     <string-array name="txtGroup">
         <item>From Checking to Savings</item>
