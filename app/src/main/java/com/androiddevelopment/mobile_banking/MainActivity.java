@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
             myIntent.putExtra("stringReference", "Access Granted!");
+            myIntent.putExtra("email",textInputEditTextEmail.getText().toString().trim());
             //display menu activity screen
             startActivity(myIntent);
             emptyInputEditText();

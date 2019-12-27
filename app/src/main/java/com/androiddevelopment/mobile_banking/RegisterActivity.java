@@ -1,5 +1,6 @@
 package com.androiddevelopment.mobile_banking;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +13,19 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.androiddevelopment.mobile_banking.helper.InputValidation;
 import com.androiddevelopment.mobile_banking.sql.DatabaseHelper;
 import com.androiddevelopment.mobile_banking.model.User;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by lalit on 8/27/2016.
@@ -30,11 +40,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
     private TextInputLayout textInputLayoutConfirmPassword;
+    private TextInputLayout textInputLayoutNIK;
+    private TextInputLayout textInputLayoutDob;
+    private TextInputLayout textInputLayoutGender;
+    private TextInputLayout textInputLayoutAddress;
+    private TextInputLayout textInputLayoutMaritalStatus;
 
     private TextInputEditText textInputEditTextName;
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
     private TextInputEditText textInputEditTextConfirmPassword;
+    private TextInputEditText textInputEditTextNIK;
+    private TextInputEditText textInputEditTextDob;
 
     private AppCompatButton appCompatButtonRegister;
     private AppCompatTextView appCompatTextViewLoginLink;
@@ -42,6 +59,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
     private User user;
+
+    Calendar calendar;
+    DatePickerDialog.OnDateSetListener date;
+
+    RadioGroup rgGender;
+    RadioButton rbGender;
+    Spinner spMaritalStatus;
+    String[] listMaritalStatus = {"Single", "Married", "Widow", "Widower", "Divorced"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,16 +89,60 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
         textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
+        textInputLayoutNIK = (TextInputLayout) findViewById(R.id.textInputLayoutNIK);
+        textInputLayoutDob = (TextInputLayout) findViewById(R.id.textInputLayoutDob);
 
         textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
         textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
         textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
+        textInputEditTextNIK = (TextInputEditText) findViewById(R.id.textInputEditTextNIK);
+        textInputEditTextDob = (TextInputEditText) findViewById(R.id.textInputEditTextDob);
 
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
         appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
 
+        setDatePickerDob();
+        setListMaritalStatus();
+    }
+
+    private void setDatePickerDob() {
+        calendar = Calendar.getInstance();
+
+        date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+
+        textInputEditTextDob.setShowSoftInputOnFocus(false);
+        textInputEditTextDob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(RegisterActivity.this, date, calendar
+                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+    }
+
+    private void updateLabel() {
+        String myFormat = "dd MMMM yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ENGLISH);
+        textInputEditTextDob.setText(sdf.format(calendar.getTime()));
+    }
+
+    private void setListMaritalStatus() {
+        spMaritalStatus = (Spinner) findViewById(R.id.spMaritasStatus);
+        ArrayAdapter<String> adapterJurusan = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, listMaritalStatus);
+        adapterJurusan.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spMaritalStatus.setAdapter(adapterJurusan);
     }
 
     /**

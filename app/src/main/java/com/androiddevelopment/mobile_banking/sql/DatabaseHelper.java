@@ -28,11 +28,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_USER_NAME = "user_name";
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_PASSWORD = "user_password";
+    private static final String COLUMN_USER_NIK = "user_nik";
+    private static final String COLUMN_USER_DOB = "user_dob";
+    private static final String COLUMN_USER_GENDER = "user_gender";
+    private static final String COLUMN_USER_ADDRESS = "user_address";
+    private static final String COLUMN_USER_MARITAL_STATUS = "user_maturalstatus";
 
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
-            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
-            + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT" + ")";
+            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_USER_NAME + " TEXT,"
+            + COLUMN_USER_EMAIL + " TEXT,"
+            + COLUMN_USER_PASSWORD + " TEXT,"
+            + COLUMN_USER_NIK + " TEXT,"
+            + COLUMN_USER_DOB + " DATE,"
+            + COLUMN_USER_GENDER + " TEXT,"
+            + COLUMN_USER_ADDRESS + " TEXT,"
+            + COLUMN_USER_MARITAL_STATUS + " TEXT"
+            + ")";
 
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
@@ -75,6 +88,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_USER_NAME, user.getName());
         values.put(COLUMN_USER_EMAIL, user.getEmail());
         values.put(COLUMN_USER_PASSWORD, user.getPassword());
+        values.put(COLUMN_USER_NIK, user.getNik());
+        values.put(COLUMN_USER_DOB, user.getDob());
+        values.put(COLUMN_USER_GENDER, user.getGender());
+        values.put(COLUMN_USER_ADDRESS, user.getAddress());
+        values.put(COLUMN_USER_MARITAL_STATUS, user.getMaritalStatus());
 
         // Inserting Row
         db.insert(TABLE_USER, null, values);
@@ -92,7 +110,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_USER_ID,
                 COLUMN_USER_EMAIL,
                 COLUMN_USER_NAME,
-                COLUMN_USER_PASSWORD
+                COLUMN_USER_PASSWORD,
+                COLUMN_USER_NIK,
+                COLUMN_USER_DOB,
+                COLUMN_USER_GENDER,
+                COLUMN_USER_ADDRESS,
+                COLUMN_USER_MARITAL_STATUS
         };
         // sorting orders
         String sortOrder =
@@ -124,6 +147,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME)));
                 user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
+                user.setNik(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NIK)));
+                user.setDob(cursor.getString(cursor.getColumnIndex(COLUMN_USER_DOB)));
+                user.setGender(cursor.getString(cursor.getColumnIndex(COLUMN_USER_GENDER)));
+                user.setAddress(cursor.getString(cursor.getColumnIndex(COLUMN_USER_ADDRESS)));
+                user.setMaritalStatus(cursor.getString(cursor.getColumnIndex(COLUMN_USER_MARITAL_STATUS)));
                 // Adding user record to list
                 userList.add(user);
             } while (cursor.moveToNext());
@@ -147,6 +175,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_USER_NAME, user.getName());
         values.put(COLUMN_USER_EMAIL, user.getEmail());
         values.put(COLUMN_USER_PASSWORD, user.getPassword());
+        values.put(COLUMN_USER_NIK, user.getNik());
+        values.put(COLUMN_USER_DOB, user.getDob());
+        values.put(COLUMN_USER_GENDER, user.getGender());
+        values.put(COLUMN_USER_ADDRESS, user.getAddress());
+        values.put(COLUMN_USER_MARITAL_STATUS, user.getMaritalStatus());
 
         // updating row
         db.update(TABLE_USER, values, COLUMN_USER_ID + " = ?",
