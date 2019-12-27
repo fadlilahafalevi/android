@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 /**
  * Created by fanny on 12/21/2019.
@@ -45,6 +48,29 @@ public class InputValidation {
         return true;
     }
 
+    public boolean isInputRadioButtonFilled(RadioButton rb, TextInputLayout textInputLayout, String message) {
+        String value = rb.getText().toString().trim();
+        if (value.isEmpty()) {
+            textInputLayout.setError(message);
+            hideKeyboardFrom(rb);
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+        return true;
+    }
+
+    public boolean isInputSpinnerFilled(Spinner sp, TextInputLayout textInputLayout, String message) {
+        String value = sp.getSelectedItem().toString().trim();
+        if (value.isEmpty()) {
+            textInputLayout.setError(message);
+            hideKeyboardFrom(sp);
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+        return true;
+    }
 
     /**
      * method to check InputEditText has valid email .
@@ -84,7 +110,7 @@ public class InputValidation {
      *
      * @param view
      */
-    private void hideKeyboardFrom(View view) {
+    public void hideKeyboardFrom(View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }

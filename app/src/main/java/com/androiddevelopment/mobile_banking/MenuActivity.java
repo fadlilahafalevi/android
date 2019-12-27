@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
         //receive welcome msg from MainActivity
             if (extras != null) {
                 receivedString = extras.getString("stringReference");
-                Toast.makeText(MenuActivity.this, receivedString, Toast.LENGTH_LONG).show();
+                //Toast.makeText(MenuActivity.this, receivedString, Toast.LENGTH_LONG).show();
             }//end if
 
         //read checking and savings balances from shared preferences file

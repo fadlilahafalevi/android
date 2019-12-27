@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
-
             Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
             myIntent.putExtra("stringReference", "Access Granted!");
             myIntent.putExtra("email",textInputEditTextEmail.getText().toString().trim());

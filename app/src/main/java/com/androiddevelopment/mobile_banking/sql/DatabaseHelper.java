@@ -41,7 +41,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_USER_EMAIL + " TEXT,"
             + COLUMN_USER_PASSWORD + " TEXT,"
             + COLUMN_USER_NIK + " TEXT,"
-            + COLUMN_USER_DOB + " DATE,"
+            + COLUMN_USER_DOB + " TEXT,"
             + COLUMN_USER_GENDER + " TEXT,"
             + COLUMN_USER_ADDRESS + " TEXT,"
             + COLUMN_USER_MARITAL_STATUS + " TEXT"

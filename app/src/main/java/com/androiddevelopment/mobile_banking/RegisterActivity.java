@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.androiddevelopment.mobile_banking.helper.InputValidation;
 import com.androiddevelopment.mobile_banking.sql.DatabaseHelper;
@@ -52,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputEditText textInputEditTextConfirmPassword;
     private TextInputEditText textInputEditTextNIK;
     private TextInputEditText textInputEditTextDob;
+    private TextInputEditText textInputEditTextAddress;
 
     private AppCompatButton appCompatButtonRegister;
     private AppCompatTextView appCompatTextViewLoginLink;
@@ -91,6 +93,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
         textInputLayoutNIK = (TextInputLayout) findViewById(R.id.textInputLayoutNIK);
         textInputLayoutDob = (TextInputLayout) findViewById(R.id.textInputLayoutDob);
+        textInputLayoutAddress = (TextInputLayout) findViewById(R.id.textInputLayoutAddress);
+        textInputLayoutGender = (TextInputLayout) findViewById(R.id.textInputLayoutGender);
+        textInputLayoutMaritalStatus = (TextInputLayout) findViewById(R.id.textInputLayoutMaritalStatus);
 
         textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
@@ -98,9 +103,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
         textInputEditTextNIK = (TextInputEditText) findViewById(R.id.textInputEditTextNIK);
         textInputEditTextDob = (TextInputEditText) findViewById(R.id.textInputEditTextDob);
+        textInputEditTextAddress = (TextInputEditText) findViewById(R.id.textInputEditTextAddress);
+
+        rgGender = (RadioGroup) findViewById(R.id.rdgGender);
+        rbGender = (RadioButton) findViewById(rgGender.getCheckedRadioButtonId());
 
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
-
         appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
 
         setDatePickerDob();
@@ -188,7 +196,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
      * This method is to validate the input text fields and post data to SQLite
      */
     private void postDataToSQLite() {
+        rgGender = (RadioGroup) findViewById(R.id.rdgGender);
+        rbGender = (RadioButton) findViewById(rgGender.getCheckedRadioButtonId());
+
         if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextNIK, textInputLayoutNIK, "Enter NIK")) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextDob, textInputLayoutDob, "Enter Date Of Birth")) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextAddress, textInputLayoutAddress, "Enter Address")) {
+            return;
+        }
+        if (!inputValidation.isInputRadioButtonFilled(rbGender, textInputLayoutAddress, "Enter Gender")) {
+            return;
+        }
+        if (!inputValidation.isInputSpinnerFilled(spMaritalStatus, textInputLayoutAddress, "Enter Marital Status")) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
@@ -210,23 +239,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setName(textInputEditTextName.getText().toString().trim());
             user.setEmail(textInputEditTextEmail.getText().toString().trim());
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
+            user.setNik(textInputEditTextNIK.getText().toString().trim());
+            user.setDob(textInputEditTextDob.getText().toString().trim());
+            user.setGender(rbGender.getText().toString().trim());
+            user.setMaritalStatus(spMaritalStatus.getSelectedItem().toString().trim());
+            user.setAddress(textInputEditTextAddress.getText().toString());
 
             databaseHelper.addUser(user);
 
             // Snack Bar to show success message that record saved successfully
-            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            // Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, getString(R.string.success_message), Toast.LENGTH_LONG).show();
             emptyInputEditText();
-
-
-
+            finish();
         } else {
             // Snack Bar to show error message that record already exists
-            Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+            // Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, getString(R.string.error_email_exists), Toast.LENGTH_LONG).show();
         }
 
-        InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
+        inputValidation.hideKeyboardFrom(activity.getCurrentFocus());
     }
 
     /**
@@ -237,5 +269,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
         textInputEditTextConfirmPassword.setText(null);
+        textInputEditTextNIK.setText(null);
+        textInputEditTextDob.setText(null);
+        textInputEditTextAddress.setText(null);
+        rbGender.setText(null);
     }
 }
