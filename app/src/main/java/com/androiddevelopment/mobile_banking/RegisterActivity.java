@@ -1,5 +1,6 @@
 package com.androiddevelopment.mobile_banking;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -257,8 +259,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             // Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
             Toast.makeText(RegisterActivity.this, getString(R.string.error_email_exists), Toast.LENGTH_LONG).show();
         }
-
-        inputValidation.hideKeyboardFrom(activity.getCurrentFocus());
     }
 
     /**

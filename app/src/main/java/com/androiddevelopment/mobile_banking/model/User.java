@@ -1,9 +1,11 @@
 package com.androiddevelopment.mobile_banking.model;
 
+import java.io.Serializable;
+
 /**
  * Created by fanny on 21/12/2019.
  */
-public class User {
+public class User implements Serializable {
 
     private int id;
     private String name;
