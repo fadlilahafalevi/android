@@ -21,7 +21,7 @@ public class TransactionActivity extends AppCompatActivity {
     public double BalanceD;
     public double DepositEntered, NewBalance, WithdrawEntered;
     TextView BalanceTV, TitleTV;
-    public DecimalFormat currency = new DecimalFormat("$###,##0.00"); //decimal formatting
+    public DecimalFormat currency = new DecimalFormat("Rp###,##0"); //decimal formatting
     SharedPreferences.Editor myEditor;
 
 
