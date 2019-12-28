@@ -15,9 +15,9 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view_inner"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="6dp"
         card_view:cardBackgroundColor="@color/colorPrimaryDark"
         android:clipToPadding="true"
         card_view:cardCornerRadius="25dp"
@@ -30,7 +30,7 @@
             android:layout_marginLeft="20dp"
             android:gravity="left"
             android:textSize="25dp"
-            android:text="Account No"
+            android:text="Savings Account No"
             android:textColor="@color/colorAccent"
             android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
@@ -45,20 +45,46 @@
             android:textColor="@color/colorAccent"/>
 
         <TextView
-            android:id="@+id/txtBalanceChecking"
+            android:id="@+id/txtBalanceSavings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="90dp"
             android:layout_marginLeft="20dp"
             android:gravity="left"
             android:textSize="40dp"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/avenirnextltpro_demi_xml"/>
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_inner1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="180dp"
+        card_view:cardBackgroundColor="@color/colorPrimaryDark"
+        android:clipToPadding="true"
+        card_view:cardCornerRadius="25dp"
+        card_view:cardElevation="0dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="left"
+            android:textSize="25dp"
+            android:text="Checking Account No"
             android:textColor="@color/colorAccent"
             android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="20dp"
             android:gravity="left"
             android:textSize="25dp"
@@ -66,10 +92,10 @@
             android:textColor="@color/colorAccent"/>
 
         <TextView
-            android:id="@+id/txtBalanceSavings"
+            android:id="@+id/txtBalanceChecking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="90dp"
             android:layout_marginLeft="20dp"
             android:gravity="left"
             android:textSize="40dp"
@@ -83,14 +109,14 @@
         android:layout_height="100dp"
         android:background="@drawable/checking"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="350dp"
         android:layout_marginLeft="10dp"
         android:padding="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="470dp"
         android:layout_marginLeft="29dp"
         android:layout_alignParentLeft="true"
         android:text="Checking"
@@ -104,13 +130,13 @@
         android:layout_height="100dp"
         android:background="@drawable/saving"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="350dp"
         android:padding="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="470dp"
         android:layout_centerHorizontal="true"
         android:text="Savings"
         android:textSize="15dp"
@@ -123,52 +149,19 @@
         android:layout_height="100dp"
         android:background="@drawable/transfer"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="350dp"
         android:layout_marginRight="10dp"
         android:padding="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="470dp"
         android:layout_marginRight="29dp"
         android:layout_alignParentRight="true"
         android:text="Transfer"
         android:textSize="15dp"
         android:textColor="@color/colorBackground"
         android:fontFamily="@font/avenirnextltpro_demi_xml"/>
-
-<!--    <Button-->
-<!--        android:text="CHECKING"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/checkingButton"-->
-<!--        android:minWidth="200dip"-->
-<!--        android:layout_below="@+id/menu_TV"-->
-<!--        android:layout_alignLeft="@+id/menu_TV"-->
-<!--        android:layout_alignStart="@+id/menu_TV"-->
-<!--        android:layout_marginTop="26dp" />-->
-
-<!--    <Button-->
-<!--        android:text="SAVINGS"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:id="@+id/savingsButton"-->
-<!--        android:minWidth="200dip"-->
-<!--        android:layout_below="@+id/checkingButton"-->
-<!--        android:layout_alignRight="@+id/menu_TV"-->
-<!--        android:layout_alignEnd="@+id/menu_TV" />-->
-
-<!--    <Button-->
-<!--        android:text="TRANSFER"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:id="@+id/transferButton"-->
-<!--        android:minWidth="200dip"-->
-<!--        android:layout_below="@+id/savingsButton"-->
-<!--        android:layout_alignLeft="@+id/savingsButton"-->
-<!--        android:layout_alignStart="@+id/savingsButton" />-->
 
 </RelativeLayout>

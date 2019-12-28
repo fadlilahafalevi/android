@@ -52,8 +52,8 @@ public class MenuActivity extends AppCompatActivity {
         TextView balanceSavings = (TextView) findViewById(R.id.txtBalanceSavings);
         TextView balanceChecking = (TextView) findViewById(R.id.txtBalanceChecking);
 
-        balanceSavings.setText(savBalance);
-        balanceChecking.setText(chkBalance);
+        balanceSavings.setText("Rp " + savBalance);
+        balanceChecking.setText("Rp " + chkBalance);
 
        //register checking button with Event Listener class, and Event handler method
         checking_BT.setOnClickListener(new View.OnClickListener() {
