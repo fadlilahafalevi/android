@@ -17,6 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/titleTextView"
+        android:fontFamily="@font/avenirnextltpro_demi_xml"
         android:textSize="24sp" />
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_below="@+id/titleTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-
+        android:fontFamily="@font/avenirnextltpro_demi_xml"
         android:layout_marginTop="50dp"
         android:id="@+id/textView" />
 
@@ -42,7 +43,8 @@
         android:textSize="18sp"
         android:text="Balance goes here"
         android:layout_alignTop="@+id/textView"
-        android:layout_alignBottom="@+id/textView" />
+        android:layout_alignBottom="@+id/textView"
+        android:fontFamily="@font/avenirnextltpro_demi_xml"/>
 
     <TextView
         android:text="Savings Balance:"
@@ -52,7 +54,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
-        android:id="@+id/textView6" />
+        android:id="@+id/textView6"
+        android:fontFamily="@font/avenirnextltpro_demi_xml" />
 
     <TextView
         android:text="Balance goes here"
@@ -65,7 +68,8 @@
         android:layout_alignLeft="@+id/cBalanceTextView"
         android:layout_alignStart="@+id/cBalanceTextView"
         android:layout_alignRight="@+id/cBalanceTextView"
-        android:layout_alignEnd="@+id/cBalanceTextView" />
+        android:layout_alignEnd="@+id/cBalanceTextView"
+        android:fontFamily="@font/avenirnextltpro_demi_xml" />
 
     <TextView
         android:text="Transfer Amount:"
@@ -75,7 +79,8 @@
         android:layout_above="@+id/TransferSpinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="54dp" />
+        android:layout_marginBottom="54dp"
+        android:fontFamily="@font/avenirnextltpro_demi_xml" />
 
     <EditText
         android:layout_width="wrap_content"
