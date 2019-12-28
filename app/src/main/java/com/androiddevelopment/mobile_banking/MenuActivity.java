@@ -9,9 +9,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androiddevelopment.mobile_banking.model.User;
+
+import org.w3c.dom.Text;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -45,6 +48,12 @@ public class MenuActivity extends AppCompatActivity {
         Button checking_BT = (Button) findViewById(R.id.checkingButton);
         Button savings_BT = (Button) findViewById(R.id.savingsButton);
         Button transfer_BT = (Button) findViewById(R.id.transferButton);
+
+        TextView balanceSavings = (TextView) findViewById(R.id.txtBalanceSavings);
+        TextView balanceChecking = (TextView) findViewById(R.id.txtBalanceChecking);
+
+        balanceSavings.setText(savBalance);
+        balanceChecking.setText(chkBalance);
 
        //register checking button with Event Listener class, and Event handler method
         checking_BT.setOnClickListener(new View.OnClickListener() {
