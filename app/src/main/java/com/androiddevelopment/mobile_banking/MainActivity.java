@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.androiddevelopment.mobile_banking.helper.InputValidation;
+import com.androiddevelopment.mobile_banking.model.User;
 import com.androiddevelopment.mobile_banking.sql.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -73,10 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 //check how many times unregistered user tried to log in with wrong credentials
 
                 verifyFromSQLite();
-
-                InputMethodManager inputManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
             }//end onClick
         });//end setOnClickListener
 
@@ -103,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
+            User user = databaseHelper.findOneUser(textInputEditTextEmail.getText().toString().trim());
+
             Intent myIntent = new Intent(MainActivity.this, MenuActivity.class);
             myIntent.putExtra("stringReference", "Access Granted!");
-            myIntent.putExtra("email",textInputEditTextEmail.getText().toString().trim());
+            myIntent.putExtra("user", user);
             //display menu activity screen
             startActivity(myIntent);
             emptyInputEditText();

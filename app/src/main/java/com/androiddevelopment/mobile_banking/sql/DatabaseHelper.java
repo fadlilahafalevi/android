@@ -163,6 +163,62 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return userList;
     }
 
+    public User findOneUser(String email) {
+        // array of columns to fetch
+        String[] columns = {
+                COLUMN_USER_ID,
+                COLUMN_USER_EMAIL,
+                COLUMN_USER_NAME,
+                COLUMN_USER_PASSWORD,
+                COLUMN_USER_NIK,
+                COLUMN_USER_DOB,
+                COLUMN_USER_GENDER,
+                COLUMN_USER_ADDRESS,
+                COLUMN_USER_MARITAL_STATUS
+        };
+        // sorting orders
+        String sortOrder =
+                COLUMN_USER_NAME + " ASC";
+        String whereClause = COLUMN_USER_EMAIL + " = ?";
+        String[] emails = {email};
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // query the user table
+        /**
+         * Here query function is used to fetch records from user table this function works like we use sql query.
+         * SQL query equivalent to this query function is
+         * SELECT user_id,user_name,user_email,user_password FROM user ORDER BY user_name;
+         */
+        Cursor cursor = db.query(TABLE_USER, //Table to query
+                columns,    //columns to return
+                whereClause,        //columns for the WHERE clause
+                emails,        //The values for the WHERE clause
+                null,       //group the rows
+                null,       //filter by row groups
+                sortOrder); //The sort order
+
+
+        // Traversing through all rows and adding to list
+        User user = new User();
+        if (cursor.moveToFirst()) {
+            user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_USER_ID))));
+            user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME)));
+            user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL)));
+            user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
+            user.setNik(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NIK)));
+            user.setDob(cursor.getString(cursor.getColumnIndex(COLUMN_USER_DOB)));
+            user.setGender(cursor.getString(cursor.getColumnIndex(COLUMN_USER_GENDER)));
+            user.setAddress(cursor.getString(cursor.getColumnIndex(COLUMN_USER_ADDRESS)));
+            user.setMaritalStatus(cursor.getString(cursor.getColumnIndex(COLUMN_USER_MARITAL_STATUS)));
+        }
+        cursor.close();
+        db.close();
+
+        // return user list
+        return user;
+    }
+
     /**
      * This method to update user record
      *

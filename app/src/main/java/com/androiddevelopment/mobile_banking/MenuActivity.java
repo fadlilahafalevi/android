@@ -4,9 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.androiddevelopment.mobile_banking.model.User;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -16,6 +21,7 @@ public class MenuActivity extends AppCompatActivity {
     public static final String SAVINGS_KEY = "savings_key";
     //declare variables for message, checking and savings balance
     String receivedString;
+    User user;
     public String chkBalance, savBalance;
 
 
@@ -28,6 +34,7 @@ public class MenuActivity extends AppCompatActivity {
         //receive welcome msg from MainActivity
             if (extras != null) {
                 receivedString = extras.getString("stringReference");
+                user = (User) extras.getSerializable("user");
                 //Toast.makeText(MenuActivity.this, receivedString, Toast.LENGTH_LONG).show();
             }//end if
 
@@ -85,6 +92,8 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });//end OnClickListener transfer
+
+        //user info
     }//end onCreate
 
     //function to retrieve current balances when program resumes
@@ -103,4 +112,22 @@ public class MenuActivity extends AppCompatActivity {
         savBalance = BalancePref.getString(SAVINGS_KEY, "7000.00");
 
     }//end getPrefs
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.user_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout_menu:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }//end MenuActivity
