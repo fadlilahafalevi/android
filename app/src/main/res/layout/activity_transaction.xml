@@ -74,18 +74,19 @@
         android:layout_marginTop="55dp"
         android:id="@+id/DepositEditText" />
 
-    <Button
-        android:text="DEPOSIT"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/DepositButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/DepositEditText"
         android:layout_alignLeft="@+id/DepositEditText"
         android:layout_alignStart="@+id/DepositEditText"
         android:layout_marginTop="10dp"
-        android:id="@+id/DepositButton" />
+        android:background="@color/colorTextHint"
+        android:text="DEPOSIT" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
@@ -95,13 +96,14 @@
         android:layout_marginTop="20dp"
         android:id="@+id/WithdrawEditText" />
 
-    <Button
-        android:text="WITHDRAW"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/WithdrawButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/WithdrawEditText"
         android:layout_alignLeft="@+id/WithdrawEditText"
         android:layout_alignStart="@+id/WithdrawEditText"
         android:layout_marginTop="25dp"
-        android:id="@+id/WithdrawButton" />
+        android:background="@color/colorTextHint"
+        android:text="WITHDRAW" />
 </RelativeLayout>

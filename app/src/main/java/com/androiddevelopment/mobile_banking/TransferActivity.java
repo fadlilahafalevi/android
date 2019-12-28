@@ -21,7 +21,7 @@ public class TransferActivity extends AppCompatActivity {
     public static final String SAVINGS_KEY = "savings_key";
     //declare variables
     public String receivedBalanceC, receivedBalanceS; //data received from menu activity
-    public DecimalFormat currency = new DecimalFormat("$###,##0.00"); //decimal formatting
+    public DecimalFormat currency = new DecimalFormat("Rp###,##0"); //decimal formatting
     TextView cBalanceTV, sBalanceTV;
     public double cBalanceD, sBalanceD, cNewBalance, sNewBalance;
     public double TransferEntered;
