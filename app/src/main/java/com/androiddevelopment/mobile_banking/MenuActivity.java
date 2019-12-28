@@ -27,6 +27,8 @@ public class MenuActivity extends AppCompatActivity {
     User user;
     public String chkBalance, savBalance;
 
+    TextView balanceSavings;
+    TextView balanceChecking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,8 @@ public class MenuActivity extends AppCompatActivity {
         Button savings_BT = (Button) findViewById(R.id.savingsButton);
         Button transfer_BT = (Button) findViewById(R.id.transferButton);
 
-        TextView balanceSavings = (TextView) findViewById(R.id.txtBalanceSavings);
-        TextView balanceChecking = (TextView) findViewById(R.id.txtBalanceChecking);
+        balanceSavings = (TextView) findViewById(R.id.txtBalanceSavings);
+        balanceChecking = (TextView) findViewById(R.id.txtBalanceChecking);
 
         balanceSavings.setText("Rp " + savBalance);
         balanceChecking.setText("Rp " + chkBalance);
@@ -134,6 +136,10 @@ public class MenuActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout_menu:
                 finish();
+                return true;
+            case R.id.refresh_menu:
+                balanceSavings.setText("Rp " + savBalance);
+                balanceChecking.setText("Rp " + chkBalance);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
